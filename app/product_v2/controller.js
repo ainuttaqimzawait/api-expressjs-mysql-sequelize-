@@ -1,20 +1,17 @@
 const sequelize = require("../../config/sequelize");
+const Product = require('./model');
 
-const index = (req, res) => {
-    const { search } = req.query;
-    let exec = {};
-    if (search) {
-        exec = {
-            sql: 'SELECT * FROM products WHERE name LIKE ?',
-            values: [`%${search}%`]
-        }
-    } else {
-        exec = {
-            sql: 'SELECT * FROM products'
-        }
+const index = (async (req, res) => {
+    try {
+        await Product.sync();
+        const result = await Product.findAll();
+        res.send(result);
+    } catch (e) {
+        res.send(e);
     }
-    sequelize.query(exec, _response(res));
-};
+})();
+
+// const store = 
 
 module.exports = {
     index
