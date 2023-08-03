@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "author": "zaw",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.5.2",
+    "nodemon": "^3.0.1",
     "sequelize": "^6.32.1"
   }
 }

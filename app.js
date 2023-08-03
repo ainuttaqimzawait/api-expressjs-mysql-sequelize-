@@ -3,10 +3,18 @@ const path = require('path');
 const app = express();
 const productRouter = require('./app/product/routes');
 const productRouterV2 = require('./app/product_v2/routes');
-const logger = require('morgan');
+// const logger = require('morgan');
+const cors = require('cors')
 
 
-app.use(logger('dev'));
+// app.use(logger());
+const corsConfig = {
+    origin: '',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+}
+app.use(cors(corsConfig))
+app.options("", cors(corsConfig));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'uploads')));
